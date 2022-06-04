@@ -1,8 +1,38 @@
 const url = "https://dadosabertos.camara.leg.br/api/v2/deputados";
-
+//https://dadosabertos.camara.leg.br/swagger/api.html#api
 const postsContainer = document.querySelector("#posts-container");
+var vetor = [];
+
+
+var form = document.getElementById('form-deputado');
+var campo = document.getElementById('input');
+var data = getAlldeputados();
 
 async function getAlldeputados() {
+    const response = await fetch(url);
+    //console.log(data);
+
+    const data = await response.json();
+    //console.log(data);
+    data.dados.map((deputado) => {
+        //console.log(deputado.nome);
+    });
+    return data.dados;
+}
+
+form.addEventListener('submit', function(e) {
+    // impede o envio do form
+    e.preventDefault();
+
+    // alerta o valor do campo
+    console.log(campo.value);
+    removeElements();
+
+    console.log(data);
+
+});
+
+/*async function getAlldeputados() {
     const response = await fetch(url);
     //console.log(data);
 
@@ -31,9 +61,7 @@ async function getAlldeputados() {
         div.appendChild(ufDeputado);
         div.appendChild(emailDeputado);
         div.appendChild(idDeputado);
-
+        
         postsContainer.appendChild(div);
     });
-}
-
-getAlldeputados();
+}*/

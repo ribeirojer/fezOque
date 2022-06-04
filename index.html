@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,9 +12,9 @@
     
     <!-- Scripts -->
     <script src="//unpkg.com/alpinejs" defer></script>
-    <script src="https://cdn.tailwindcss.com"></script>    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="autocomplete.js" defer></script>    
     <script src="script.js" defer></script>
-    <script src="autocomplete.js" defer></script>
 
     <!-- Style -->
     <link rel="stylesheet" href="style.css">
@@ -23,7 +23,7 @@
 </head>
 <body>
     <!-- ====== Navbar Section Start -->
-    <header x-data="{navbarOpen: false}" class="w-full flex items-center">
+    <header x-data="{navbarOpen: false}" class="w-full bg-white flex items-center">
         <div class="container">
           <div class="flex -mx-4 items-center justify-between relative">
             <div class="px-4 w-60 max-w-full">
@@ -136,8 +136,8 @@
                     text-base
                     font-medium
                     text-white
-                    bg-primary
                     rounded-lg
+                    bg-green-500
                     py-3
                     px-7
                     hover:bg-opacity-90
@@ -153,26 +153,30 @@
     <!-- ====== Navbar Section End -->
     <main class="flex">
         <div id="ladoesquerdo">
-            <h1>Informações de Deputados na Câmara</h1>
-            <p>Pesquise um nome de um deputado atualmente em exercício: </p>
-            <form autocomplete="off">
-                <div>
+            <h1 class="text-2xl font-bold mt-48">Informações de Deputados na Câmara</h1>
+            <p class="">Pesquise um nome de um deputado atualmente em exercício: </p>
+            <form id="form-deputado" autocomplete="off">
+                <div class="flex">
                     <input type="text" id="input" placeholder="Type a name here..." />
-                </div>
+                    <button type="submit" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button>
+                  </div>
                 <ul class="list"></ul>
             </form>
         </div>
-        <div id="ladodireito" class="">
-            <div class="text-center">
-            <img
-              src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp"
-              class="rounded-full w-32 mb-4 mx-auto"
-              alt="Avatar"
-            />
-            <h5 class="text-xl font-medium leading-tight mb-2">John Doe</h5>
-            <p class="text-gray-500">Web designer</p>
-          </div>
-            <!--<div id="posts-container"></div>-->
+        <div id="ladodireito" class="flex items-center">
+            <div class="flex justify-center">
+                <div class="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
+                    <img id="imagem_deputado" class=" w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg" src="https://mdbootstrap.com/wp-content/uploads/2020/06/vertical.jpg" alt="" />
+                    <div class="p-6 flex flex-col justify-start">
+                        <h5 id="nome_deputado" class="text-gray-900 text-xl font-medium mb-2">Card title</h5>
+                        <p  id="texto_deputado" class="text-gray-700 text-base mb-4">
+                        This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                        </p>
+                        <p  id="partido_deputado" class="text-gray-600 text-xs">Last updated 3 mins ago</p>
+                    </div>
+                </div>
+            </div>
+            <div id="posts-container">
         </div>
     </main>
 </body>

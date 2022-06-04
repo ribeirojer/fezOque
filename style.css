@@ -2,12 +2,6 @@ body {
     background-color: lightgrey;
     /**/
 }
-header {
-    background-color: #ffffff;
-}
-p {
-    color: rebeccapurple;
-}
 main div img {
     height: 150px;
 }
@@ -27,7 +21,6 @@ main div img {
     font-family: 'Dancing Script', cursive;
     font-weight: 700;
     font-size: 3rem;
-    
 }
 main {
     height: 87vh;
@@ -75,3 +68,6 @@ input[type="text"] {
   .list-items:hover {
     background-color: #dddddd;
   }
+#posts-container {
+    display: none;
+}
