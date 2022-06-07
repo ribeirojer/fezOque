@@ -1,12 +1,14 @@
 const url = "https://dadosabertos.camara.leg.br/api/v2/deputados";
 //https://dadosabertos.camara.leg.br/swagger/api.html#api
 const postsContainer = document.querySelector("#posts-container");
+var imgDeputado = document.querySelector("#imagem_deputado");
+var nomeDeputado = document.querySelector("#nome_deputado");
+var textoDeputado = document.querySelector("#texto_deputado");
+var textoOrgaos = document.querySelector("#orgaos_deputado");
+//História da Revolução Russa de Léon Trotsky
 var vetor = [];
-
-
 var form = document.getElementById('form-deputado');
 var campo = document.getElementById('input');
-var data = getAlldeputados();
 
 async function getAlldeputados() {
     const response = await fetch(url);
@@ -19,49 +21,48 @@ async function getAlldeputados() {
     });
     return data.dados;
 }
+async function getDeputado(id) {
+    const response = await fetch(`${url}/${id}`);
+    const data = await response.json();
+
+    const orgaos = await fetch(`${url}/${id}/orgaos`);
+    const dataOrgaos = await orgaos.json();
+
+    return [data.dados, dataOrgaos.dados];
+}
+
+const myPromise = getAlldeputados();
 
 form.addEventListener('submit', function(e) {
     // impede o envio do form
     e.preventDefault();
 
     // alerta o valor do campo
-    console.log(campo.value);
     removeElements();
 
-    console.log(data);
+    myPromise.then((data) => {
+        console.log(data);
+        for(let i = 0; i<data.length; i++){
+            if(data[i].nome === campo.value){
+                imgDeputado.setAttribute("src",`${data[i].urlFoto}`);
+                nomeDeputado.innerText = data[i].nome;
+                
+                const minhaPromise = getDeputado(data[i].id);
+                minhaPromise.then((data2) => {
+                    console.log(data2);
+                    textoDeputado.innerText = `${data2[0].nomeCivil} nasceu em ${data2[0].municipioNascimento} - ${data2[0].ufNascimento}. Foi eleito(a) por ${data2[0].ultimoStatus.siglaUf}, e seu atual partido é ${data2[0].ultimoStatus.siglaPartido}`;
 
-});
-
-/*async function getAlldeputados() {
-    const response = await fetch(url);
-    //console.log(data);
-
-    const data = await response.json();
-    //console.log(data);
-
-    data.dados.map((deputado) => {
-        const div = document.createElement("div");
-        const imagemDeputado = document.createElement("img");
-        const nomeDeputado = document.createElement("h2");
-        const partidoDeputado = document.createElement("p");
-        const ufDeputado = document.createElement("p");
-        const emailDeputado = document.createElement("p");
-        const idDeputado = document.createElement("p");
-        
-        imagemDeputado.setAttribute("src",`${deputado.urlFoto}`);
-        nomeDeputado.innerText = deputado.nome;
-        partidoDeputado.innerText = deputado.siglaPartido;
-        ufDeputado.innerText = deputado.siglaUf;
-        emailDeputado.innerText = deputado.email;
-        idDeputado.innerText = deputado.id;
-        
-        div.appendChild(imagemDeputado);
-        div.appendChild(nomeDeputado);
-        div.appendChild(partidoDeputado);
-        div.appendChild(ufDeputado);
-        div.appendChild(emailDeputado);
-        div.appendChild(idDeputado);
-        
-        postsContainer.appendChild(div);
+                    textoOrgaos.innerText = `Participa dos seguintes orgãos: `;
+                    
+                    for(let j = 0; j<data2[1].length; j++){ 
+                        const span = document.createElement("span");
+                        span.innerText = data2[1][j].siglaOrgao;
+                        span.setAttribute("title", `${data2[1][j].nomeOrgao}`);
+                        span.setAttribute('style', 'padding: 0 4px;');
+                        textoOrgaos.appendChild(span);
+                    }
+                });
+            }
+        }
     });
-}*/
+});

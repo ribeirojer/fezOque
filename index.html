@@ -23,7 +23,7 @@
 </head>
 <body>
     <!-- ====== Navbar Section Start -->
-    <header x-data="{navbarOpen: false}" class="w-full bg-white flex items-center">
+    <header x-data="{navbarOpen: false}" class="w-full flex items-center">
         <div class="container">
           <div class="flex -mx-4 items-center justify-between relative">
             <div class="px-4 w-60 max-w-full">
@@ -76,7 +76,7 @@
                           lg:inline-flex
                           flex lg:ml-12"
                       >
-                        Home
+                        Deputados
                       </a>
                     </li>
                     <li>
@@ -93,7 +93,7 @@
                           lg:ml-12
                         "
                       >
-                        Payment
+                        Partidos
                       </a>
                     </li>
                     <li>
@@ -110,7 +110,7 @@
                           lg:ml-12
                         "
                       >
-                        Features
+                        Estados
                       </a>
                     </li>
                   </ul>
@@ -153,8 +153,8 @@
     <!-- ====== Navbar Section End -->
     <main class="flex">
         <div id="ladoesquerdo">
-            <h1 class="text-2xl font-bold mt-48">Informações de Deputados na Câmara</h1>
-            <p class="">Pesquise um nome de um deputado atualmente em exercício: </p>
+            <h1 class="text-white text-2xl font-bold mt-48">Informações de Deputados na Câmara</h1>
+            <p class="text-white ">Pesquise um nome de um deputado atualmente em exercício: </p>
             <form id="form-deputado" autocomplete="off">
                 <div class="flex">
                     <input type="text" id="input" placeholder="Type a name here..." />
@@ -163,20 +163,29 @@
                 <ul class="list"></ul>
             </form>
         </div>
-        <div id="ladodireito" class="flex items-center">
+        <div id="ladodireito" class="flex items-center align-center">
             <div class="flex justify-center">
-                <div class="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
-                    <img id="imagem_deputado" class=" w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg" src="https://mdbootstrap.com/wp-content/uploads/2020/06/vertical.jpg" alt="" />
-                    <div class="p-6 flex flex-col justify-start">
-                        <h5 id="nome_deputado" class="text-gray-900 text-xl font-medium mb-2">Card title</h5>
-                        <p  id="texto_deputado" class="text-gray-700 text-base mb-4">
-                        This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                        </p>
-                        <p  id="partido_deputado" class="text-gray-600 text-xs">Last updated 3 mins ago</p>
+                <div class="h-80 w-[550px] p-4 flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
+                    <img id="imagem_deputado" class=" w-48 h-96 md:h-auto object-cover md:w-48 rounded-lg md:rounded-none md:rounded-l-lg" src="assets/brasil (1).png" alt="brasil" />
+                    <div class="pl-6 flex flex-col justify-start">
+                        <h5 id="nome_deputado" class="text-gray-900 text-xl font-medium mx-auto">Brasil</h5>
+                        <p  id="texto_deputado" class="my-4 text-gray-700 text-base text-sm">
+                          Ouviram do Ipiranga as margens plácidas
+                          <br>De um povo heroico o brado retumbante,                          
+                          <br>E o sol da Liberdade, em raios fúlgidos,                          
+                          <br>Brilhou no céu da Pátria nesse instante.                          
+                          <br>Se o penhor dessa igualdade                          
+                          <br>Conseguimos conquistar com braço forte,                          
+                          <br>Em teu seio, ó Liberdade,                          
+                          <br>Desafia o nosso peito a própria morte!
+                          <br>Ó Pátria amada,                        
+                          <br>Idolatrada,                          
+                          Salve! Salve!                        
+                          <p  id="orgaos_deputado" class="text-sm flex flex-wrap">Hino Nacional Brasileiro</p>
                     </div>
                 </div>
             </div>
-            <div id="posts-container">
+            <div id="posts-container"></div>
         </div>
     </main>
 </body>

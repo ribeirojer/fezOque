@@ -1,6 +1,11 @@
 body {
-    background-color: lightgrey;
+    background-color: #0f0e5e;
     /**/
+}
+header {
+  background-color: #ffffff;
+  position: fixed;
+  top: 0;
 }
 main div img {
     height: 150px;
@@ -23,7 +28,7 @@ main div img {
     font-size: 3rem;
 }
 main {
-    height: 87vh;
+    height: 100vh;
     background-image: url(assets/bbblurry.svg);
     background-repeat: no-repeat;
     background-size: cover;
