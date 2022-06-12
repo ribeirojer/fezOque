@@ -1,9 +1,4 @@
-body {
-    background-color: #0f0e5e;
-    /**/
-}
 header {
-  background-color: #ffffff;
   position: fixed;
   top: 0;
 }
@@ -34,16 +29,14 @@ main {
     background-size: cover;
     background-position: center;
 }
-@media (min-width: 1280px) {
-  .container {
-      max-width: 98vw;
-  }
-}
 #ladoesquerdo {
     width: 50%;
+    height: 192px;
     display: flex;
     align-items: center;
-    flex-direction: column
+    flex-direction: column;
+    position: relative;
+    top: 40%;
 }
 form {
     width: 20rem;
@@ -75,4 +68,22 @@ input[type="text"] {
   }
 #posts-container {
     display: none;
+}
+#orgaos_deputado span {
+    border-radius: 0.2rem;
+    margin: 0.1rem 0.2rem;
+}
+@media (max-width: 768px) {
+    header {
+      padding: 1rem 0;
+    }
+    main {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    #ladoesquerdo {
+      width: unset;
+      position: relative;
+      top: 20%;
+    }
 }

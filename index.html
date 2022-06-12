@@ -22,138 +22,49 @@
     <title>Fez oque?</title>
 </head>
 <body>
-    <!-- ====== Navbar Section Start -->
-    <header x-data="{navbarOpen: false}" class="w-full flex items-center">
-        <div class="container">
-          <div class="flex -mx-4 items-center justify-between relative">
-            <div class="px-4 w-60 max-w-full">
-              <a href="javascript:void(0)" class="w-full block py-5">
-                <img src="assets/logo2.png" alt="logo" class="w-full ml-5"/>
-              </a>
-            </div>
-            <div class="flex px-4 justify-between items-center w-full">
-              <div>
-                <button
-                  @click="navbarOpen = !navbarOpen"
-                  :class="navbarOpen && 'navbarTogglerActive' "
-                  id="navbarToggler"
-                  class="block absolute right-4 top-1/2
-                    -translate-y-1/2 lg:hidden
-                    focus:ring-2 ring-primary
-                    px-3   py-[6px]   rounded-lg"   >
-                  <span class="relative w-[30px] h-[2px] my-[6px] block bg-body-color"
-                  ></span>
-                  <span class="relative w-[30px] h-[2px] my-[6px] block bg-body-color"
-                  ></span>
-                  <span class="relative w-[30px] h-[2px] my-[6px] block bg-body-color"
-                  ></span>
-                </button>
-                <nav
-                  :class="!navbarOpen && 'hidden' "
-                  id="navbarCollapse"
-                  class="
-                    absolute
-                    py-5
-                    px-6
-                    shadow
-                    rounded-lg
-                    max-w-[250px]
-                    w-full
-                    lg:max-w-full lg:w-full
-                    right-4
-                    top-full
-                    lg:block lg:static lg:shadow-none
-                  "
-                >
-                  <ul class="blcok lg:flex">
-                    <li>
-                      <a
-                        href="javascript:void(0)"
-                        class="text-base font-medium
-                          text-dark
-                          hover:text-primary
-                          py-2
-                          lg:inline-flex
-                          flex lg:ml-12"
-                      >
-                        Deputados
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="javascript:void(0)"
-                        class="
-                          text-base
-                          font-medium
-                          text-dark
-                          hover:text-primary
-                          py-2
-                          lg:inline-flex
-                          flex
-                          lg:ml-12
-                        "
-                      >
-                        Partidos
-                      </a>
-                    </li>
-                    <li>
-                      <a
-                        href="javascript:void(0)"
-                        class="
-                          text-base
-                          font-medium
-                          text-dark
-                          hover:text-primary
-                          py-2
-                          lg:inline-flex
-                          flex
-                          lg:ml-12
-                        "
-                      >
-                        Estados
-                      </a>
-                    </li>
-                  </ul>
-                </nav>
-              </div>
-              <div class="sm:flex justify-end hidden pr-16 lg:pr-0">
-                <a
-                  href="javascript:void(0)"
-                  class="
-                    text-base
-                    font-medium
-                    text-dark
-                    hover:text-primary
-                    py-3
-                    px-7
-                  "
-                >
-                  Login
+    <header x-data="{navbarOpen: false}" class="w-full flex items-center justify-between bg-white">
+        <a href="index.html">
+            <img src="assets/logo2.png" alt="logo" class="ml-4 w-60"/>
+        </a>
+        <div>
+          <button @click="navbarOpen = !navbarOpen"
+            :class="navbarOpen && 'navbarTogglerActive' "
+            id="navbarToggler"
+            class="block absolute right-4 top-1/2
+              -translate-y-1/2 lg:hidden
+              focus:ring-2 ring-primary
+              px-3   py-[6px]   rounded-lg"   >
+            <span class="relative w-[30px] h-[2px] my-[6px] block bg-blue-600"></span>
+            <span class="relative w-[30px] h-[2px] my-[6px] block bg-blue-600"></span>
+            <span class="relative w-[30px] h-[2px] my-[6px] block bg-blue-600"></span>
+          </button>
+          <nav :class="!navbarOpen && 'hidden' "
+            id="navbarCollapse"
+            class="bg-white absolute py-5 px-6 shadow rounded-lg max-w-[140px] w-full lg:max-w-full lg:w-full right-4 top-[77px] lg:block lg:static lg:shadow-none">
+            <ul class="block lg:flex">
+              <li>
+                <a href="index.html" class="text-base font-medium text-dark hover:text-primary py-2 lg:inline-flex flex lg:ml-12">
+                  Deputados
                 </a>
-                <a
-                  href="javascript:void(0)"
-                  class="
-                    text-base
-                    font-medium
-                    text-white
-                    rounded-lg
-                    bg-green-500
-                    py-3
-                    px-7
-                    hover:bg-opacity-90
-                  "
-                >
-                  Sign Up
+              </li>
+              <li>
+                <a href="index.html" class="text-base font-medium text-dark hover:text-primary py-2 lg:inline-flex flex lg:ml-12">
+                  Partidos
                 </a>
-              </div>
-            </div>
-          </div>
+              </li>
+              <li>
+                <a
+                  href="index.html" class="text-base font-medium text-dark hover:text-primary py-2 lg:inline-flex flex lg:ml-12">
+                  Estados
+                </a>
+              </li>
+            </ul>
+          </nav>
         </div>
     </header>
-    <!-- ====== Navbar Section End -->
-    <main class="flex">
+    <main class="flex bg-[#0f0e5e]">
         <div id="ladoesquerdo">
-            <h1 class="text-white text-2xl font-bold mt-48">Informações de Deputados na Câmara</h1>
+            <h1 class="text-white text-2xl font-bold">Informações de Deputados na Câmara</h1>
             <p class="text-white ">Pesquise um nome de um deputado atualmente em exercício: </p>
             <form id="form-deputado" autocomplete="off">
                 <div class="flex">
