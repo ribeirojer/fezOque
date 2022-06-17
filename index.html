@@ -4,12 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!-- Google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
-    
+      
     <!-- Scripts -->
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="https://cdn.tailwindcss.com"></script>
@@ -22,82 +17,77 @@
     <title>Fez oque?</title>
 </head>
 <body>
-    <header x-data="{navbarOpen: false}" class="w-full flex items-center justify-between bg-white">
-        <a href="index.html">
-            <img src="assets/logo2.png" alt="logo" class="ml-4 w-60"/>
-        </a>
-        <div>
-          <button @click="navbarOpen = !navbarOpen"
-            :class="navbarOpen && 'navbarTogglerActive' "
-            id="navbarToggler"
-            class="block absolute right-4 top-1/2
-              -translate-y-1/2 lg:hidden
-              focus:ring-2 ring-primary
-              px-3   py-[6px]   rounded-lg"   >
-            <span class="relative w-[30px] h-[2px] my-[6px] block bg-blue-600"></span>
-            <span class="relative w-[30px] h-[2px] my-[6px] block bg-blue-600"></span>
-            <span class="relative w-[30px] h-[2px] my-[6px] block bg-blue-600"></span>
-          </button>
-          <nav :class="!navbarOpen && 'hidden' "
-            id="navbarCollapse"
-            class="bg-white absolute py-5 px-6 shadow rounded-lg max-w-[140px] w-full lg:max-w-full lg:w-full right-4 top-[77px] lg:block lg:static lg:shadow-none">
-            <ul class="block lg:flex">
-              <li>
-                <a href="index.html" class="text-base font-medium text-dark hover:text-primary py-2 lg:inline-flex flex lg:ml-12">
-                  Deputados
-                </a>
-              </li>
-              <li>
-                <a href="index.html" class="text-base font-medium text-dark hover:text-primary py-2 lg:inline-flex flex lg:ml-12">
-                  Partidos
-                </a>
-              </li>
-              <li>
-                <a
-                  href="index.html" class="text-base font-medium text-dark hover:text-primary py-2 lg:inline-flex flex lg:ml-12">
-                  Estados
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-    </header>
-    <main class="flex bg-[#0f0e5e]">
-        <div id="ladoesquerdo">
-            <h1 class="text-white text-2xl font-bold">Informações de Deputados na Câmara</h1>
-            <p class="text-white ">Pesquise um nome de um deputado atualmente em exercício: </p>
-            <form id="form-deputado" autocomplete="off">
-                <div class="flex">
-                    <input type="text" id="input" placeholder="Type a name here..." />
-                    <button type="submit" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button>
-                  </div>
-                <ul class="list"></ul>
-            </form>
-        </div>
-        <div id="ladodireito" class="flex items-center align-center">
-            <div class="flex justify-center">
-                <div class="h-80 w-[550px] p-4 flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
-                    <img id="imagem_deputado" class=" w-48 h-96 md:h-auto object-cover md:w-48 rounded-lg md:rounded-none md:rounded-l-lg" src="assets/brasil (1).png" alt="brasil" />
-                    <div class="pl-6 flex flex-col justify-start">
-                        <h5 id="nome_deputado" class="text-gray-900 text-xl font-medium mx-auto">Brasil</h5>
-                        <p  id="texto_deputado" class="my-4 text-gray-700 text-base text-sm">
-                          Ouviram do Ipiranga as margens plácidas
-                          <br>De um povo heroico o brado retumbante,                          
-                          <br>E o sol da Liberdade, em raios fúlgidos,                          
-                          <br>Brilhou no céu da Pátria nesse instante.                          
-                          <br>Se o penhor dessa igualdade                          
-                          <br>Conseguimos conquistar com braço forte,                          
-                          <br>Em teu seio, ó Liberdade,                          
-                          <br>Desafia o nosso peito a própria morte!
-                          <br>Ó Pátria amada,                        
-                          <br>Idolatrada,                          
-                          Salve! Salve!                        
-                          <p  id="orgaos_deputado" class="text-sm flex flex-wrap">Hino Nacional Brasileiro</p>
-                    </div>
-                </div>
-            </div>
-            <div id="posts-container"></div>
-        </div>
-    </main>
+  <header x-data="{navbarOpen: false}" class="fixed top-0 w-full flex items-center justify-between bg-white p-3">
+      <a href="index.html">
+          <img src="assets/logo2.png" alt="logo" class="md:ml-4 w-48"/>
+      </a>
+      <div>
+        <button @click="navbarOpen = !navbarOpen"
+          :class="navbarOpen && 'navbarTogglerActive' "
+          id="navbarToggler"
+          class="block absolute right-4 top-1/2
+            -translate-y-1/2 lg:hidden
+            focus:ring-2 ring-primary
+            px-2   py-1   rounded-lg"   >
+          <span class="relative w-[30px] h-[2px] my-[6px] block bg-blue-600"></span>
+          <span class="relative w-[30px] h-[2px] my-[6px] block bg-blue-600"></span>
+          <span class="relative w-[30px] h-[2px] my-[6px] block bg-blue-600"></span>
+        </button>
+        <nav :class="!navbarOpen && 'hidden' "
+          id="navbarCollapse"
+          class="bg-white absolute py-5 px-6 shadow rounded-lg max-w-[140px] w-full lg:max-w-full lg:w-full right-4 top-[77px] lg:block lg:static lg:shadow-none">
+          <ul class="block lg:flex">
+            <li>
+              <a href="index.html" class="text-base font-medium text-dark hover:text-primary py-2 lg:inline-flex flex lg:ml-12">
+                Deputados
+              </a>
+            </li>
+            <li>
+              <a href="index.html" class="text-base font-medium text-dark hover:text-primary py-2 lg:inline-flex flex lg:ml-12">
+                Partidos
+              </a>
+            </li>
+            <li>
+              <a
+                href="index.html" class="text-base font-medium text-dark hover:text-primary py-2 lg:inline-flex flex lg:ml-12">
+                Estados
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+  </header>
+  <main class="flex flex-col-reverse items-center bg-[#0f0e5e] h-screen bg-[url('assets/bbblurry.svg')] bg-no-repeat bg-cover bg-center">
+    <div id="ladoesquerdo" class="h-48 w-2/4 flex items-center flex-col relative top-[40%]">
+        <h1 class="text-white text-2xl font-bold">Informações de Deputados na Câmara</h1>
+        <p class="text-white ">Pesquise um nome de um deputado atualmente em exercício: </p>
+        <form id="form-deputado" class="w-40 md:w-96 py-10" autocomplete="off">
+            <div class="flex">
+                <input type="text" id="input" placeholder="Digite um nome aqui..." class="w-full py-4 px-2 border-none outline-none bg-white text-base rounded"/>
+                <button type="submit" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out">Button</button>
+              </div>
+            <ul class="list w-full bg-white list-none"></ul>
+        </form>
+    </div>
+    <div id="ladodireito" class="flex items-center w-11/12 lg:h-[21rem] h-[16rem] lg:w-[550px] md:w-[480px] p-4 flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
+      <img id="imagem_deputado" class="w-10 h-10 rounded-full object-cover md:w-44 md:rounded-none md:rounded-l-lg" src="assets/brasil (1).png" alt="brasil" />
+      <div class="flex flex-col justify-start md:pl-6 max-h-60 text-xs">
+        <h5 id="nome_deputado" class="text-gray-900 font-medium mx-auto">Brasil</h5>
+        <p  id="texto_deputado" class="my-4 text-gray-700">
+          Ouviram do Ipiranga as margens plácidas
+          <br>De um povo heroico o brado retumbante,                          
+          <br>E o sol da Liberdade, em raios fúlgidos,                          
+          <br>Brilhou no céu da Pátria nesse instante.                          
+          <br>Se o penhor dessa igualdade                          
+          <br>Conseguimos conquistar com braço forte,                          
+          <br>Em teu seio, ó Liberdade,                          
+          <br>Desafia o nosso peito a própria morte!
+          <br>Ó Pátria amada,                        
+          <br>Idolatrada,                          
+          Salve! Salve!                        
+        <p  id="orgaos_deputado" class="text-sm flex flex-wrap">Hino Nacional Brasileiro</p>
+      </div>
+    </div>
+  </main>
 </body>
 </html>
