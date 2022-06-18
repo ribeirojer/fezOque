@@ -36,12 +36,11 @@ const myPromise = getAlldeputados();
 form.addEventListener('submit', function(e) {
     // impede o envio do form
     e.preventDefault();
-
+    textoDeputado.classList.remove('espacamentoInicial');
     // alerta o valor do campo
     removeElements();
 
     myPromise.then((data) => {
-        console.log(data);
         for(let i = 0; i<data.length; i++){
             if(data[i].nome === campo.value){
                 imgDeputado.setAttribute("src",`${data[i].urlFoto}`);
@@ -49,20 +48,47 @@ form.addEventListener('submit', function(e) {
                 
                 const minhaPromise = getDeputado(data[i].id);
                 minhaPromise.then((data2) => {
-                    console.log(data2);
                     textoDeputado.innerText = `${data2[0].nomeCivil} nasceu em ${data2[0].municipioNascimento} - ${data2[0].ufNascimento}. Foi eleito(a) por ${data2[0].ultimoStatus.siglaUf}, e seu atual partido é ${data2[0].ultimoStatus.siglaPartido}`;
-
                     textoOrgaos.innerText = `Participa dos seguintes orgãos: `;
-                    
                     for(let j = 0; j<data2[1].length; j++){ 
-                        const span = document.createElement("span");
-                        span.innerText = data2[1][j].siglaOrgao;
-                        span.setAttribute("title", `${data2[1][j].nomeOrgao}`);
-                        span.setAttribute('style', 'padding: 0 4px;');
-                        textoOrgaos.appendChild(span);
+                        const spanPai = document.createElement("span");
+                        const botao = document.createElement("button");
+                        const spanFilho = document.createElement("span");
+
+                        spanPai.classList.add('relative');
+
+                        botao.setAttribute("onclick", `showPopover('${data2[1][j].siglaOrgao}')`);
+                        botao.setAttribute('style', 'padding: 0 4px;');
+                        botao.innerText = data2[1][j].siglaOrgao;
+                        botao.classList.add('cursor-pointer');
+
+                        spanFilho.innerText = data2[1][j].nomeOrgao;
+                        spanFilho.setAttribute('id', `${data2[1][j].siglaOrgao}`);
+                        spanFilho.setAttribute('style', 'z-index: -1;');
+                        spanFilho.classList.add('absolute');
+                        spanFilho.classList.add('bottom-8');
+                        spanFilho.classList.add('right-10');
+                        spanFilho.classList.add('opacity-0');
+                        spanFilho.classList.add('balao');
+
+                        spanPai.appendChild(botao);
+                        spanPai.appendChild(spanFilho);
+
+                        textoOrgaos.appendChild(spanPai);
                     }
                 });
             }
         }
     });
 });
+
+function showPopover(id) {
+    var textoDoElementoClicado = document.getElementById(`${id}`);
+    if(textoDoElementoClicado.classList.contains("opacity-0")){
+        textoDoElementoClicado.classList.toggle("opacity-0");
+        textoDoElementoClicado.setAttribute('style', 'z-index: 2;');
+    }else {
+        textoDoElementoClicado.classList.toggle("opacity-0");
+        textoDoElementoClicado.setAttribute('style', 'z-index: -1;');
+    }
+}
