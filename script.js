@@ -5,7 +5,7 @@ var imgDeputado = document.querySelector("#imagem_deputado");
 var nomeDeputado = document.querySelector("#nome_deputado");
 var textoDeputado = document.querySelector("#texto_deputado");
 var textoOrgaos = document.querySelector("#orgaos_deputado");
-//História da Revolução Russa de Léon Trotsky
+
 var vetor = [];
 var form = document.getElementById('form-deputado');
 var campo = document.getElementById('input');
