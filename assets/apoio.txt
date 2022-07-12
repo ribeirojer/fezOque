@@ -1,0 +1,15 @@
+Referência de icones:
+<a href="https://www.flaticon.com/br/icones-gratis/brasil" title="brasil �cones">Brasil �cones criados por Freepik - Flaticon</a>
+<a href="https://www.flaticon.com/br/icones-gratis/brasil" title="brasil �cones">Brasil �cones criados por Good Ware - Flaticon</a>
+
+paleta:
+#118D2F
+#F5E001
+#1A3394
+#3C8E3B
+
+#9ff233
+#d5ff6b
+#ffffa0
+#8633f2
+#bd66ff
