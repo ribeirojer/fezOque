@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import Home from './pages/Home.vue'
+import Header from './components/Header.vue'
+import "../node_modules/bulma/css/bulma.css"
 </script>
 
 <template>
     <div class="wrapper">
-      <HelloWorld />
+      <Header />
+      <Home />
     </div>
 </template>
 
