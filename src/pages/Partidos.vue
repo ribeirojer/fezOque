@@ -138,14 +138,14 @@ export default {
     const url =
       "https://dadosabertos.camara.leg.br/api/v2/partidos?sigla=&ordem=ASC&ordenarPor=sigla&pagina=1&itens=15";
     const app = document.getElementById("app");
-/**
+
     var form = document.getElementById("form-deputado");
     var campo = document.getElementById("input");
     var imgPartido = document.querySelector("#imagem_partido");
     var nomePartido = document.querySelector("#nome_partido");
     var textoPartido = document.querySelector("#texto_partido");
     var nomesDeputado = document.querySelector("#nomes_deputado");
-
+/**
     async function retornaPartidos() {
       var objeto = [];
       var string =
@@ -168,7 +168,7 @@ export default {
       }
       return objeto;
     }
-    async function retornaMembrosPartido(todosDeputados, idPartido) {
+    async function retornaMembrosPartido(todosDeputados: { headers: { [x: string]: any; }; data: { dados: string|any[]; }; }, idPartido: any) {
       var objeto = [];
       var string = "https://dadosabertos.camara.leg.br/api/v2/partidos/";
       var contador = 1;

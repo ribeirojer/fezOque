@@ -20,10 +20,6 @@
   font-size: 0.8rem;
   line-height: 1.3rem;
 }
-#app {
-  overflow: auto;
-  height: 260px;
-}
 body::-webkit-scrollbar-track {
   background: orange;        /* color of the tracking area */
 }

@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import Home from './pages/Home.vue'
 import Header from './components/Header.vue'
-import "../node_modules/bulma/css/bulma.css"
 </script>
 
 <template>
-    <div class="wrapper">
+    <div>
       <Header />
       <Home />
     </div>
@@ -38,4 +37,5 @@ header {
     flex-wrap: wrap;
   }
 }
+
 </style>

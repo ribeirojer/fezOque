@@ -1,13 +1,4 @@
 <template>
-  <!-- Scripts 
-  <script src="//unpkg.com/alpinejs" defer></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="./scripts/autocomplete.js" defer></script>    
-    <script src="./scripts/script.js" defer></script>
--->
-  <!-- Style 
-    <link rel="stylesheet" href="style.css">
--->
   <main
     class="greetings flex justify-end flex-col-reverse pt-4 lg:pt-0 items-center bg-[#0f0e5e] h-screen bg-[url('assets/bbblurry.svg')] bg-no-repeat bg-cover bg-center lg:h-[88vh] lg:flex-row-reverse lg:justify-evenly lg:max-w-[100vw]"
   >
@@ -87,11 +78,6 @@ export default {
     var form = document.getElementById("form-deputado");
     var campo = document.getElementById("input");
 
-    async function getAlldeputados() {
-      const response = await fetch(url);
-      const data = await response.json();
-      return data.dados;
-    }
     async function getDeputado(id: string) {
       const response = await fetch(`${url}/${id}`);
       const data = await response.json();
@@ -102,6 +88,11 @@ export default {
       return [data.dados, dataOrgaos.dados];
     }
 
+    async function getAlldeputados() {
+      const response = await fetch(url);
+      const data = await response.json();
+      return data.dados;
+    }
     const myPromise = getAlldeputados();
     /** 
 form?.addEventListener("submit", function (e) {
@@ -167,6 +158,8 @@ function showPopover(id) {
   }
 }*/
   },
+  methods: {},
+
   name: "Home",
 };
 </script>
