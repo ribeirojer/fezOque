@@ -1,9 +1,9 @@
 <template>
   <main
-    class="flex justify-end flex-col-reverse pt-4 lg:pt-0 items-center bg-green-900 h-screen bg-[url('../assets/bbblurry.svg')] bg-no-repeat bg-cover bg-center lg:h-[88vh] lg:flex-row lg:justify-evenly lg:max-w-[100vw]"
+    class="pt-4 lg:pt-0 items-center bg-green-900 h-screen bg-[url('../assets/bbblurry.svg')] bg-no-repeat bg-cover bg-center lg:h-[88vh] lg:flex-row lg:justify-evenly lg:max-w-[100vw]"
   >
     <div id="ladoesquerdo" class="h-48 flex items-center flex-col">
-      <Description :info="'Partidos'" :descript="'Partido com deputado'"/>
+      <Description :info="'Partidos'" :descript="'Partido com deputado'" />
       <form id="form-deputado" class="md:w-96 pt-4 md:pt-6" autocomplete="off">
         <div class="flex">
           <input
@@ -22,53 +22,42 @@
         <ul class="list w-full bg-white list-none"></ul>
       </form>
     </div>
-    <div
-      id="ladodireito"
-      class="flex w-72 h-[22rem] justify-center mb-4 md:my-12 md:w-4/5 md:justify-evenly md:h-[372px] p-4 md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg lg:h-[24rem] lg:w-[576px]"
-    >
-      <img
-        id="imagem_partido"
-        class="hidden w-10 h-10 md:block md:h-full md:object-contain object-cover md:w-44 md:rounded-none md:rounded-l-lg"
-        src="assets/brasil (1).png"
-        alt="brasil"
-      />
-      <div
-        class="flex flex-col justify-start md:pl-6 max-h-[19rem] lg:max-h-full text-xs lg:text-base"
-      >
-        <h5
-          id="nome_partido"
-          class="text-gray-900 font-medium mx-auto md:text-lg lg:text-xl"
-        >
-          Brasil
-        </h5>
-        <p
-          id="texto_partido"
-          class="espacamentoInicial my-3 text-gray-700 md:text-base"
-        >
-          Ouviram do Ipiranga as margens plácidas
-          <br />De um povo heroico o brado retumbante, <br />E o sol da
-          Liberdade, em raios fúlgidos, <br />Brilhou no céu da Pátria nesse
-          instante. <br />Se o penhor dessa igualdade <br />Conseguimos
-          conquistar com braço forte, <br />Em teu seio, ó Liberdade,
-          <br />Desafia o nosso peito a própria morte! <br />Ó Pátria amada,
-          <br />Idolatrada, Salve! Salve!
-        </p>
-        <p id="nomes_deputado" class="flex flex-wrap text-sm md:text-base">
-          Hino Nacional Brasileiro
-        </p>
-        <div id="app" class="text-base"></div>
+    <div class="flex flex-wrap">
+      <div v-for="(partido, index) in filteredPartidos" :key="index">
+        <CardPartido
+          :sigla="partido.sigla"
+          :uri="partido.uri"
+          :num="index + 1"
+        />
       </div>
     </div>
   </main>
 </template>
 
 <script lang="ts">
+import axios from "axios";
 import Description from "@/components/Description.vue";
+import Card from "@/components/Card.vue";
+import CardPartido from "@/components/CardPartido.vue";
 export default {
-  components: { Description },
+  components: { Description, Card, CardPartido },
+  data() {
+    return {
+      partido: [],
+      filteredPartidos: [] as Array<{ sigla: string; uri: string }>,
+      search: "",
+    };
+  },
   created() {
+    axios
+      .get("https://dadosabertos.camara.leg.br/api/v2/partidos")
+      .then((res) => {
+        console.log(res.data.dados);
+        this.partido = res.data.dados;
+        this.filteredPartidos = res.data.dados;
+      });
     const url =
-      "https://dadosabertos.camara.leg.br/api/v2/partidos?sigla=&ordem=ASC&ordenarPor=sigla&pagina=1&itens=15";
+      "?sigla=&ordem=ASC&ordenarPor=sigla&pagina=1&itens=15";
     const app = document.getElementById("app");
 
     var form = document.getElementById("form-deputado");

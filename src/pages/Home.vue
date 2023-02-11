@@ -1,6 +1,6 @@
 <template>
   <main
-    class="greetings flex justify-end flex-col-reverse pt-4 lg:pt-0 items-center bg-[#0f0e5e] h-screen bg-[url('assets/bbblurry.svg')] bg-no-repeat bg-cover bg-center lg:h-[88vh] lg:flex-row-reverse lg:justify-evenly lg:max-w-[100vw]"
+    class="greetings flex flex-wrap justify-end flex-col-reverse pt-4 lg:pt-0 items-center bg-[#0f0e5e] h-screen bg-[url('assets/bbblurry.svg')] bg-no-repeat bg-cover bg-center lg:h-[88vh] lg:flex-row-reverse lg:justify-evenly lg:max-w-[100vw]"
   >
     <div id="ladoesquerdo" class="h-48 flex items-center flex-col">
       <description
@@ -25,75 +25,39 @@
         <ul class="list w-full bg-white list-none"></ul>
       </form>
     </div>
-    <div
-      id="ladodireito"
-      class="flex w-72 h-[22rem] justify-center mb-4 md:my-12 md:w-4/5 md:justify-evenly md:h-[372px] p-4 md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg lg:h-[24rem] lg:w-[576px]"
-    >
-      <img
-        id="imagem_deputado"
-        class="hidden w-10 h-10 md:block md:h-full md:object-contain object-cover md:w-44 md:rounded-none md:rounded-l-lg"
-        src="assets/brasil (1).png"
-        alt="brasil"
-      />
-      <div class="flex flex-col justify-start md:pl-6 max-h-60 text-xs">
-        <h5
-          id="nome_deputado"
-          class="text-gray-900 font-medium mx-auto md:text-lg lg:text-xl"
-        >
-          Brasil
-        </h5>
-        <p
-          id="texto_deputado"
-          class="espacamentoInicial my-3 text-gray-700 md:text-base"
-        >
-          Ouviram do Ipiranga as margens plácidas
-          <br />De um povo heroico o brado retumbante, <br />E o sol da
-          Liberdade, em raios fúlgidos, <br />Brilhou no céu da Pátria nesse
-          instante. <br />Se o penhor dessa igualdade <br />Conseguimos
-          conquistar com braço forte, <br />Em teu seio, ó Liberdade,
-          <br />Desafia o nosso peito a própria morte! <br />Ó Pátria amada,
-          <br />Idolatrada, Salve! Salve!
-        </p>
-        <p id="orgaos_deputado" class="flex flex-wrap text-sm md:text-base">
-          Hino Nacional Brasileiro
-        </p>
-      </div>
+    <div class="deputados">
+      <!--<div v-for="(deputado, index) in filteredDeputados" :key="index">
+        <Card
+          :name="deputado.nome"
+          :urlFoto="deputado.urlFoto"
+          :num="index + 1"
+        />
+      </div>-->
     </div>
   </main>
 </template>
 
 <script lang="ts">
 import Description from "@/components/Description.vue";
+import Card from "@/components/Card.vue";
+import axios from "axios";
 export default {
-  components: { Description },
+  components: { Description, Card },
+  data() {
+    return {
+      deputados: [],
+      filteredDeputados: [] as Array<{ nome: string; urlFoto: string }>,
+      search: "",
+    };
+  },
   created: function () {
-    const url = "https://dadosabertos.camara.leg.br/api/v2/deputados";
-    var postsContainer = document.querySelector("#posts-container");
-    var imgDeputado = document.querySelector("#imagem_deputado");
-    var nomeDeputado = document.querySelector("#nome_deputado");
-    var textoDeputado = document.querySelector("#texto_deputado");
-    var textoOrgaos = document.querySelector("#orgaos_deputado");
+    axios
+      .get("https://dadosabertos.camara.leg.br/api/v2/deputados")
+      .then((res) => {
+        this.deputados = res.data.dados;
+        this.filteredDeputados = res.data.dados;
+      });
 
-    var vetor = [];
-    var form = document.getElementById("form-deputado");
-    var campo = document.getElementById("input");
-
-    async function getDeputado(id: string) {
-      const response = await fetch(`${url}/${id}`);
-      const data = await response.json();
-
-      const orgaos = await fetch(`${url}/${id}/orgaos`);
-      const dataOrgaos = await orgaos.json();
-
-      return [data.dados, dataOrgaos.dados];
-    }
-
-    async function getAlldeputados() {
-      const response = await fetch(url);
-      const data = await response.json();
-      return data.dados;
-    }
-    const myPromise = getAlldeputados();
     /** 
 form?.addEventListener("submit", function (e) {
   // impede o envio do form
@@ -159,12 +123,15 @@ function showPopover(id) {
 }*/
   },
   methods: {},
-
   name: "Home",
 };
 </script>
 
 <style scoped>
+.deputados {
+  display: flex;
+  flex-wrap: wrap;
+}
 h1 {
   font-weight: 500;
   font-size: 2.6rem;
