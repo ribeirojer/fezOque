@@ -3,12 +3,10 @@
     class="greetings flex justify-end flex-col-reverse pt-4 lg:pt-0 items-center bg-[#0f0e5e] h-screen bg-[url('assets/bbblurry.svg')] bg-no-repeat bg-cover bg-center lg:h-[88vh] lg:flex-row-reverse lg:justify-evenly lg:max-w-[100vw]"
   >
     <div id="ladoesquerdo" class="h-48 flex items-center flex-col">
-      <h1 class="text-white text-sm md:text-3xl lg:text-2xl font-bold">
-        Informações de Deputados na Câmara
-      </h1>
-      <p class="text-white text-xs md:text-2xl lg:text-xl lg:py-4">
-        Pesquise sobre um deputado atualmente em exercício
-      </p>
+      <description
+        :info="'Deputados'"
+        :descript="'Pesquise sobre um deputado'"
+      />
       <form id="form-deputado" class="md:w-96 pt-4 md:pt-6" autocomplete="off">
         <div class="flex">
           <input
@@ -65,7 +63,9 @@
 </template>
 
 <script lang="ts">
+import Description from "@/components/Description.vue";
 export default {
+  components: { Description },
   created: function () {
     const url = "https://dadosabertos.camara.leg.br/api/v2/deputados";
     var postsContainer = document.querySelector("#posts-container");

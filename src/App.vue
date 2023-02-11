@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Home from './pages/Home.vue'
+import Partidos from './pages/Partidos.vue'
 import Header from './components/Header.vue'
 </script>
 
@@ -7,6 +8,7 @@ import Header from './components/Header.vue'
     <div>
       <Header />
       <Home />
+      <Partidos />
     </div>
 </template>
 
