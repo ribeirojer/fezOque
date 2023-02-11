@@ -1,21 +1,31 @@
 <template>
-  <main class="bg-[#0f0e5e] h-[100vh]">
+  <main class="bg-[#0f0e5e] h-screen">
     <Header></Header>
     <div id="ladoesquerdo" class="h-48 flex items-center flex-col">
       <description
         :info="'Deputados'"
         :descript="'Pesquise sobre um deputado'"
       />
-      <Form></Form>
-    </div>
-    <div class="deputados">
-      <!--<div v-for="(deputado, index) in filteredDeputados" :key="index">
-        <Card
-          :name="deputado.nome"
-          :urlFoto="deputado.urlFoto"
-          :num="index + 1"
+      <div class="flex gap-4 w-96">
+        <input
+          v-model="search"
+          type="text"
+          placeholder="Digite um nome aqui..."
+          class="w-full py-4 px-3 border-none outline-none bg-white text-base rounded"
         />
-      </div>-->
+        <button
+          class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
+          @click="buscar"
+        >
+          Buscar
+        </button>
+      </div>
+      <!--<ul class="list w-full bg-white list-none"></ul>-->
+    </div>
+    <div class="deputados" v-if="showDeputados">
+      <div v-for="deputado in filteredDeputados" :key="deputado.urlFoto">
+        <Card :name="deputado.nome" :urlFoto="deputado.urlFoto" />
+      </div>
     </div>
   </main>
 </template>
@@ -30,9 +40,10 @@ export default {
   components: { Description, Card, Header, Form },
   data() {
     return {
-      deputados: [],
+      deputados: [] as Array<{ nome: string; urlFoto: string }>,
       filteredDeputados: [] as Array<{ nome: string; urlFoto: string }>,
       search: "",
+      showDeputados: false,
     };
   },
   created: function () {
@@ -43,7 +54,14 @@ export default {
         this.filteredDeputados = res.data.dados;
       });
   },
-  methods: {},
+  methods: {
+    buscar: function () {
+      this.showDeputados = true;
+      this.filteredDeputados = this.deputados.filter((deputado) =>
+        deputado.nome.toLowerCase().includes(this.search.toLowerCase().trim())
+      );
+    },
+  },
   name: "Home",
 };
 </script>
