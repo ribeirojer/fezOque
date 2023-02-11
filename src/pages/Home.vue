@@ -13,6 +13,11 @@
           placeholder="Digite um nome aqui..."
           class="w-full py-4 px-3 border-none outline-none bg-white text-base rounded"
         />
+        <ul class="absolute bg-white ap" v-if="showDeputados">
+          <div v-for="deputado in filteredDeputados" :key="deputado.urlFoto">
+            <li>{{ deputado.nome }}</li>
+          </div>
+        </ul>
         <button
           class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
           @click="buscar"
@@ -20,7 +25,6 @@
           Buscar
         </button>
       </div>
-      <!--<ul class="list w-full bg-white list-none"></ul>-->
     </div>
     <div class="deputados" v-if="showDeputados">
       <div v-for="deputado in filteredDeputados" :key="deputado.urlFoto">
@@ -70,25 +74,14 @@ export default {
   display: flex;
   flex-wrap: wrap;
 }
-h1 {
-  font-weight: 500;
-  font-size: 2.6rem;
-  top: -10px;
+.ap {
+  top: 17rem;
+  padding: 0.5rem;
+  width: 17rem;
+  border-radius: 0.2rem;
 }
 
 h3 {
   font-size: 1.2rem;
-}
-
-.greetings h1,
-.greetings h3 {
-  text-align: center;
-}
-
-@media (min-width: 1024px) {
-  .greetings h1,
-  .greetings h3 {
-    text-align: left;
-  }
 }
 </style>
