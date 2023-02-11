@@ -1,23 +1,18 @@
 <script setup lang="ts">
-import Home from './pages/Home.vue'
-import Partidos from './pages/Partidos.vue'
 import Header from './components/Header.vue'
 </script>
 
 <template>
     <div>
       <Header />
-      <Home />
-      <Partidos />
+      <router-view></router-view>
     </div>
 </template>
 
 <style scoped>
 header {
   line-height: 1.5;
-}
-
-.logo {
+}.logo {
   display: block;
   margin: 0 auto 2rem;
 }

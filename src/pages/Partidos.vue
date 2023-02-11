@@ -2,6 +2,7 @@
   <main
     class="pt-4 lg:pt-0 items-center bg-green-900 h-screen bg-[url('../assets/bbblurry.svg')] bg-no-repeat bg-cover bg-center lg:h-[88vh] lg:flex-row lg:justify-evenly lg:max-w-[100vw]"
   >
+    <Header></Header>
     <div id="ladoesquerdo" class="h-48 flex items-center flex-col">
       <Description :info="'Partidos'" :descript="'Partido com deputado'" />
       <form id="form-deputado" class="md:w-96 pt-4 md:pt-6" autocomplete="off">
@@ -36,11 +37,12 @@
 
 <script lang="ts">
 import axios from "axios";
+import Header from "@/components/Header.vue";
 import Description from "@/components/Description.vue";
 import Card from "@/components/Card.vue";
 import CardPartido from "@/components/CardPartido.vue";
 export default {
-  components: { Description, Card, CardPartido },
+  components: { Header, Description, Card, CardPartido },
   data() {
     return {
       partido: [],
@@ -56,8 +58,7 @@ export default {
         this.partido = res.data.dados;
         this.filteredPartidos = res.data.dados;
       });
-    const url =
-      "?sigla=&ordem=ASC&ordenarPor=sigla&pagina=1&itens=15";
+    const url = "?sigla=&ordem=ASC&ordenarPor=sigla&pagina=1&itens=15";
     const app = document.getElementById("app");
 
     var form = document.getElementById("form-deputado");

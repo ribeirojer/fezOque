@@ -2,6 +2,7 @@
   <main
     class="greetings flex flex-wrap justify-end flex-col-reverse pt-4 lg:pt-0 items-center bg-[#0f0e5e] h-screen bg-[url('assets/bbblurry.svg')] bg-no-repeat bg-cover bg-center lg:h-[88vh] lg:flex-row-reverse lg:justify-evenly lg:max-w-[100vw]"
   >
+  <Header></Header>
     <div id="ladoesquerdo" class="h-48 flex items-center flex-col">
       <description
         :info="'Deputados'"
@@ -38,11 +39,12 @@
 </template>
 
 <script lang="ts">
+import Header from "@/components/Header.vue";
 import Description from "@/components/Description.vue";
 import Card from "@/components/Card.vue";
 import axios from "axios";
 export default {
-  components: { Description, Card },
+  components: { Description, Card, Header },
   data() {
     return {
       deputados: [],
@@ -57,70 +59,6 @@ export default {
         this.deputados = res.data.dados;
         this.filteredDeputados = res.data.dados;
       });
-
-    /** 
-form?.addEventListener("submit", function (e) {
-  // impede o envio do form
-  e.preventDefault();
-  textoDeputado?.classList.remove("espacamentoInicial");
-  // alerta o valor do campo
-  removeElements();
-
-  myPromise.then((data) => {
-    for (let i = 0; i < data.length; i++) {
-      if (data[i].nome === campo.value) {
-        imgDeputado.setAttribute("src", `${data[i].urlFoto}`);
-        nomeDeputado.innerText = data[i].nome;
-
-        const minhaPromise = getDeputado(data[i].id);
-        minhaPromise.then((data2) => {
-          textoDeputado.innerText = `${data2[0].nomeCivil} nasceu em ${data2[0].municipioNascimento} - ${data2[0].ufNascimento}. Foi eleito(a) por ${data2[0].ultimoStatus.siglaUf}, e seu atual partido é ${data2[0].ultimoStatus.siglaPartido}`;
-          textoOrgaos.innerText = `Participa dos seguintes orgãos: `;
-          for (let j = 0; j < data2[1].length; j++) {
-            const spanPai = document.createElement("span");
-            const botao = document.createElement("button");
-            const spanFilho = document.createElement("span");
-
-            spanPai.classList.add("relative");
-
-            botao.setAttribute(
-              "onclick",
-              `showPopover('${data2[1][j].siglaOrgao}')`
-            );
-            botao.setAttribute("style", "padding: 0 4px;");
-            botao.innerText = data2[1][j].siglaOrgao;
-            botao.classList.add("cursor-pointer");
-
-            spanFilho.innerText = data2[1][j].nomeOrgao;
-            spanFilho.setAttribute("id", `${data2[1][j].siglaOrgao}`);
-            spanFilho.setAttribute("style", "z-index: -1;");
-            spanFilho.classList.add("absolute");
-            spanFilho.classList.add("bottom-8");
-            spanFilho.classList.add("right-10");
-            spanFilho.classList.add("opacity-0");
-            spanFilho.classList.add("balao");
-
-            spanPai.appendChild(botao);
-            spanPai.appendChild(spanFilho);
-
-            textoOrgaos.appendChild(spanPai);
-          }
-        });
-      }
-    }
-  });
-});
-
-function showPopover(id) {
-  var textoDoElementoClicado = document.getElementById(`${id}`);
-  if (textoDoElementoClicado.classList.contains("opacity-0")) {
-    textoDoElementoClicado.classList.toggle("opacity-0");
-    textoDoElementoClicado.setAttribute("style", "z-index: 2;");
-  } else {
-    textoDoElementoClicado.classList.toggle("opacity-0");
-    textoDoElementoClicado.setAttribute("style", "z-index: -1;");
-  }
-}*/
   },
   methods: {},
   name: "Home",
