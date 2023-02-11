@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mt-12">
     <h1 class="text-white text-sm md:text-3xl lg:text-2xl font-bold">
       Informações de {{ info }} na Câmara
     </h1>
