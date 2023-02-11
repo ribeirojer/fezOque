@@ -35,9 +35,8 @@ import axios from "axios";
 import Header from "@/components/Header.vue";
 import Description from "@/components/Description.vue";
 import Card from "@/components/Card.vue";
-import Form from "@/components/Form.vue";
 export default {
-  components: { Description, Card, Header, Form },
+  components: { Description, Card, Header },
   data() {
     return {
       deputados: [] as Array<{ nome: string; urlFoto: string }>,
