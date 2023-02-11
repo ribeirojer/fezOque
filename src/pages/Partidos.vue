@@ -1,27 +1,9 @@
 <template>
-  <main
-    class="pt-4 lg:pt-0 items-center bg-green-900 h-screen bg-[url('../assets/bbblurry.svg')] bg-no-repeat bg-cover bg-center lg:h-[88vh] lg:flex-row lg:justify-evenly lg:max-w-[100vw]"
-  >
+  <main class="bg-green-900 h-[100vh]">
     <Header></Header>
     <div id="ladoesquerdo" class="h-48 flex items-center flex-col">
       <Description :info="'Partidos'" :descript="'Partido com deputado'" />
-      <form id="form-deputado" class="md:w-96 pt-4 md:pt-6" autocomplete="off">
-        <div class="flex">
-          <input
-            type="text"
-            id="input"
-            placeholder="Digite um nome aqui..."
-            class="w-full py-4 px-3 border-none outline-none bg-white text-base rounded"
-          />
-          <button
-            type="submit"
-            class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out"
-          >
-            Button
-          </button>
-        </div>
-        <ul class="list w-full bg-white list-none"></ul>
-      </form>
+      <Form></Form>
     </div>
     <div class="flex flex-wrap">
       <div v-for="(partido, index) in filteredPartidos" :key="index">
@@ -41,8 +23,9 @@ import Header from "@/components/Header.vue";
 import Description from "@/components/Description.vue";
 import Card from "@/components/Card.vue";
 import CardPartido from "@/components/CardPartido.vue";
+import Form from "@/components/Form.vue";
 export default {
-  components: { Header, Description, Card, CardPartido },
+  components: { Header, Description, Card, CardPartido, Form },
   data() {
     return {
       partido: [],
