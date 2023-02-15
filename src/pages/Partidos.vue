@@ -20,7 +20,7 @@
       <!--<ul class="list w-full bg-white list-none"></ul>-->
     </div>
     <div class="flex flex-wrap" v-if="showPartidos">
-      <div v-for="partido in filteredPartidos" :key="partido.uri">
+      <div v-for="partido in filteredPartidos.slice(0, 5)" :key="partido.uri">
         <CardPartido :sigla="partido.sigla" :uri="partido.uri" />
       </div>
     </div>

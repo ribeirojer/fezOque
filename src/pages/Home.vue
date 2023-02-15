@@ -14,7 +14,7 @@
           class="w-full py-4 px-3 border-none outline-none bg-white text-base rounded"
         />
         <ul class="absolute bg-white ap" v-if="showDeputados">
-          <div v-for="deputado in filteredDeputados" :key="deputado.urlFoto">
+          <div v-for="deputado in filteredDeputados.slice(0, 5)" :key="deputado.urlFoto">
             <li>{{ deputado.nome }}</li>
           </div>
         </ul>
@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="deputados" v-if="showDeputados">
-      <div v-for="deputado in filteredDeputados" :key="deputado.urlFoto">
+      <div v-for="deputado in filteredDeputados.slice(0, 5)" :key="deputado.urlFoto">
         <Card :name="deputado.nome" :urlFoto="deputado.urlFoto" />
       </div>
     </div>
