@@ -1,11 +1,31 @@
 <template>
-  <header class="flex justify-between bg-white py-3 px-6">
+  <header>
     <a href="/">
-      <img src="../assets/logo2.png" alt="Logo" class="h-12 mr-6" />
+      <img src="../assets/logo2.png" alt="Logo" />
     </a>
-    <nav class="flex items-center">
-      <a href="/" class="font-medium mr-6">Deputados</a>
-      <a href="/partidos" class="font-medium">Partidos</a>
+    <nav>
+      <a href="/">Deputados</a>
+      <a href="/partidos">Partidos</a>
     </nav>
   </header>
 </template>
+
+<style scoped>
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 12px 24px;
+}
+img {
+  height: 48px;
+}
+nav {
+  display: flex;
+  gap: 1.5rem;
+}
+nav a {
+  font-weight: 500;
+}
+</style>

@@ -1,11 +1,7 @@
 <template>
-  <div class="mt-12">
-    <h1 class="text-white text-sm md:text-3xl lg:text-2xl font-bold">
-      Informações de {{ info }} na Câmara
-    </h1>
-    <p class="text-white text-xs md:text-2xl lg:text-xl lg:py-4">
-      {{ descript }} atualmente em exercício
-    </p>
+  <div>
+    <h1>Informações de {{ info }} na Câmara</h1>
+    <p>{{ descript }} atualmente em exercício</p>
   </div>
 </template>
 
@@ -18,4 +14,20 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+div {
+  margin-top: 48px;
+  color: #fff;
+}
+h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  /*text-sm md:text-3xl*/
+}
+p {
+  padding: 1rem 0;
+  font-size: 1.2rem;
+  font-weight: 500;
+  /*text-xs md:text-2xl lg:text-xl lg:py-4"*/
+}
+</style>
