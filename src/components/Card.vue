@@ -1,9 +1,9 @@
 <template>
-  <div id="pokemon" class="mt-6">
+  <div>
     <figure>
-      <img  class="w-32" :src="urlFoto" alt="Placeholder image" />
+      <img :src="urlFoto" alt="Placeholder image" />
     </figure>
-    <h4 class="text-xl font-medium">{{ name }}</h4>
+    <h4>{{ name }}</h4>
   </div>
 </template>
 
@@ -16,4 +16,18 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+div {
+  margin: 1.5rem 1rem;
+  background-color: #fff;
+}
+img {
+  width: 128px;
+  margin: 1rem;
+
+}
+h4 {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+</style>

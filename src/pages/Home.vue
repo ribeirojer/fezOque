@@ -1,5 +1,5 @@
 <template>
-  <main class="bg-[#0f0e5e] h-screen">
+  <main>
     <Header></Header>
     <div id="ladoesquerdo" class="h-48 flex items-center flex-col">
       <description
@@ -11,10 +11,14 @@
           v-model="search"
           type="text"
           placeholder="Digite um nome aqui..."
+          @change="digitar"
           class="w-full py-4 px-3 border-none outline-none bg-white text-base rounded"
         />
-        <ul class="absolute bg-white ap" v-if="showDeputados">
-          <div v-for="deputado in filteredDeputados.slice(0, 5)" :key="deputado.urlFoto">
+        <ul class="absolute bg-white ap" v-if="showDigitados">
+          <div
+            v-for="deputado in filteredDeputados.slice(0, 5)"
+            :key="deputado.urlFoto"
+          >
             <li>{{ deputado.nome }}</li>
           </div>
         </ul>
@@ -27,7 +31,7 @@
       </div>
     </div>
     <div class="deputados" v-if="showDeputados">
-      <div v-for="deputado in filteredDeputados.slice(0, 5)" :key="deputado.urlFoto">
+      <div v-for="deputado in filteredDeputados" :key="deputado.urlFoto">
         <Card :name="deputado.nome" :urlFoto="deputado.urlFoto" />
       </div>
     </div>
@@ -47,6 +51,7 @@ export default {
       filteredDeputados: [] as Array<{ nome: string; urlFoto: string }>,
       search: "",
       showDeputados: false,
+      showDigitados: false,
     };
   },
   created: function () {
@@ -60,9 +65,26 @@ export default {
   methods: {
     buscar: function () {
       this.showDeputados = true;
-      this.filteredDeputados = this.deputados.filter((deputado) =>
-        deputado.nome.toLowerCase().includes(this.search.toLowerCase().trim())
-      );
+      this.filteredDeputados = this.deputados
+        .filter((deputado) =>
+          deputado.nome
+            .toLowerCase()
+            .startsWith(this.search.toLowerCase().trim())
+        )
+        .sort();
+    },
+    digitar: function () {
+      if (this.search == "") {
+        this.showDigitados = false;
+      }
+      this.showDigitados = true;
+      this.filteredDeputados = this.deputados
+        .filter((deputado) =>
+          deputado.nome
+            .toLowerCase()
+            .startsWith(this.search.toLowerCase().trim())
+        )
+        .sort();
     },
   },
   name: "Home",
@@ -70,6 +92,10 @@ export default {
 </script>
 
 <style scoped>
+main {
+  background-color: #0f0e5e;
+  min-height: 100vh;
+}
 .deputados {
   display: flex;
   flex-wrap: wrap;
@@ -79,9 +105,5 @@ export default {
   padding: 0.5rem;
   width: 17rem;
   border-radius: 0.2rem;
-}
-
-h3 {
-  font-size: 1.2rem;
 }
 </style>

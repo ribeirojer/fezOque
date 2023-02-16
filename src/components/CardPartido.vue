@@ -1,9 +1,9 @@
 <template>
-  <div id="pokemon" class="p-4 mx-4 bg-white mt-6">
+  <div>
     <figure>
-      <img class="w-32" :src="imagem" alt="Imagem não encontrada" />
+      <img :src="imagem" alt="Imagem não encontrada" />
     </figure>
-    <h4 class="text-xl font-medium">{{ sigla }}</h4>
+    <h4>{{ sigla }}</h4>
   </div>
 </template>
 
@@ -28,4 +28,17 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+div {
+  padding: 1rem;
+  margin: 1.5rem 1rem 0 1rem;
+  background-color: #fff;
+}
+img {
+  width: 128px;
+}
+h4 {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+</style>
