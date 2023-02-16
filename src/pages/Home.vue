@@ -1,18 +1,17 @@
 <template>
   <main>
     <Header></Header>
-    <div id="ladoesquerdo" class="h-48 flex items-center flex-col">
+    <section>
       <description
         :info="'Deputados'"
         :descript="'Pesquise sobre um deputado'"
       />
-      <div class="flex gap-4 w-96">
+      <form>
         <input
           v-model="search"
           type="text"
           placeholder="Digite um nome aqui..."
           @change="digitar"
-          class="w-full py-4 px-3 border-none outline-none bg-white text-base rounded"
         />
         <ul class="absolute bg-white ap" v-if="showDigitados">
           <div
@@ -28,8 +27,8 @@
         >
           Buscar
         </button>
-      </div>
-    </div>
+      </form>
+    </section>
     <div class="deputados" v-if="showDeputados">
       <div v-for="deputado in filteredDeputados" :key="deputado.urlFoto">
         <Card :name="deputado.nome" :urlFoto="deputado.urlFoto" />
@@ -95,6 +94,22 @@ export default {
 main {
   background-color: #0f0e5e;
   min-height: 100vh;
+}
+section {
+  height: 12rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+form {
+  display: flex;
+  gap: 1rem;
+  width: 24rem;
+}
+form input {
+  width: 100%;
+  /**  w-full py-4 px-3 border-none outline-none bg-white text-base rounded"
+       */
 }
 .deputados {
   display: flex;
